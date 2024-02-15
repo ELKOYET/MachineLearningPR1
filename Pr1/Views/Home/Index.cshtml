@@ -1,0 +1,34 @@
+﻿@model IEnumerable<RecogResult>
+
+<form asp-action="index" asp-controller="home" method="post" enctype="multipart/form-data">
+    <br/>
+    <input type="file" name="testFile" />
+    <br />
+    <button type="submit">Отправить</button>
+</form>
+
+<div> Результаты ананлиза</div>
+<style>
+    tr {
+        border-bottom: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+    }
+</style>
+
+<div>
+
+    @if (Model != null)
+    {
+        <table>
+
+            @foreach (var res in Model)
+            {
+                <tr>
+                    <td>@res.Label @res.Score</td>
+                </tr>
+            }
+
+        </table>
+    }
+
+</div>
